@@ -1,0 +1,133 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 1060" font-family="Georgia, serif" role="img" aria-labelledby="fc-title fc-desc">
+  <title id="fc-title">Printer rescue flowchart</title>
+  <desc id="fc-desc">A calm decision path from "it didn't print" to fixed, in seven checks.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#2f6f5e"/>
+    </marker>
+  </defs>
+  <style>
+    .box { fill: #fffdf8; stroke: #2f6f5e; stroke-width: 1.5; rx: 10; }
+    .decision { fill: #e3efea; stroke: #2f6f5e; stroke-width: 1.5; }
+    .outcome { fill: #f6e8dc; stroke: #a05a2c; stroke-width: 1.5; }
+    .text { font-size: 15px; fill: #33302a; }
+    .small { font-size: 12.5px; fill: #6f6a60; }
+    .lbl { font-size: 12.5px; fill: #2f6f5e; font-weight: bold; font-family: system-ui, sans-serif; }
+    .fix { stroke: #a05a2c; }
+    .edge { stroke: #2f6f5e; stroke-width: 1.5; fill: none; marker-end: url(#arrow); }
+  </style>
+
+  <rect x="0" y="0" width="760" height="1060" fill="#f7f4ee" rx="12"/>
+
+  <!-- start -->
+  <rect x="240" y="24" width="280" height="52" rx="26" fill="#33302a"/>
+  <text x="380" y="55" text-anchor="middle" class="text" fill="#fffdf8">"It didn't print"</text>
+
+  <path d="M380,76 V108" class="edge"/>
+
+  <!-- 1 power -->
+  <rect x="180" y="112" width="400" height="56" class="decision" rx="10"/>
+  <text x="380" y="134" text-anchor="middle" class="text">1 · Power on, no error on its screen?</text>
+  <text x="380" y="154" text-anchor="middle" class="small">If the panel names a problem, trust it first.</text>
+  <path d="M180,140 H100 V192" class="fix edge"/>
+  <text x="120" y="130" class="lbl">no</text>
+  <rect x="30" y="196" width="140" height="52" class="outcome" rx="10"/>
+  <text x="100" y="216" text-anchor="middle" class="text" font-size="13">Plug it in.</text>
+  <text x="100" y="234" text-anchor="middle" class="small">Follow the panel's error.</text>
+  <path d="M170,222 H240 V168" class="fix edge"/>
+  <path d="M380,168 V196" class="edge"/>
+  <text x="392" y="188" class="lbl">yes</text>
+
+  <!-- 2 self test -->
+  <rect x="180" y="200" width="400" height="56" class="decision" rx="10"/>
+  <text x="380" y="222" text-anchor="middle" class="text">2 · Can it copy/test from its own panel?</text>
+  <text x="380" y="242" text-anchor="middle" class="small">Splits machine problems from computer problems.</text>
+  <path d="M580,228 H680 V260" class="fix edge"/>
+  <text x="610" y="218" class="lbl">no</text>
+  <rect x="620" y="264" width="116" height="66" class="outcome" rx="10"/>
+  <text x="678" y="284" text-anchor="middle" class="text" font-size="13">Printer-side:</text>
+  <text x="678" y="302" text-anchor="middle" class="small">paper, supplies,</text>
+  <text x="678" y="318" text-anchor="middle" class="small">sensor sweep (Ch 7)</text>
+  <path d="M620,297 H560 V256" class="fix edge"/>
+  <path d="M380,256 V284" class="edge"/>
+  <text x="392" y="276" class="lbl">yes</text>
+
+  <!-- 3 queue -->
+  <rect x="180" y="288" width="400" height="56" class="decision" rx="10"/>
+  <text x="380" y="310" text-anchor="middle" class="text">3 · Stuck jobs in the print queue?</text>
+  <text x="380" y="330" text-anchor="middle" class="small">This one check ends half of all mysteries.</text>
+  <path d="M180,316 H100 V344" class="fix edge"/>
+  <text x="120" y="306" class="lbl">yes</text>
+  <rect x="30" y="348" width="140" height="52" class="outcome" rx="10"/>
+  <text x="100" y="368" text-anchor="middle" class="text" font-size="13">Cancel all jobs,</text>
+  <text x="100" y="386" text-anchor="middle" class="small">send one test page.</text>
+  <path d="M170,374 H240 V344" class="fix edge"/>
+  <path d="M380,344 V376" class="edge"/>
+  <text x="392" y="366" class="lbl">no</text>
+
+  <!-- 4 right printer -->
+  <rect x="180" y="380" width="400" height="56" class="decision" rx="10"/>
+  <text x="380" y="402" text-anchor="middle" class="text">4 · Queue aimed at the right printer?</text>
+  <text x="380" y="422" text-anchor="middle" class="small">No "Copy 1" impostors; delete duplicates.</text>
+  <path d="M180,408 H100 V436" class="fix edge"/>
+  <text x="120" y="398" class="lbl">no</text>
+  <rect x="30" y="440" width="140" height="52" class="outcome" rx="10"/>
+  <text x="100" y="460" text-anchor="middle" class="text" font-size="13">Pick the real one;</text>
+  <text x="100" y="478" text-anchor="middle" class="small">remove the impostor.</text>
+  <path d="M170,466 H240 V436" class="fix edge"/>
+  <path d="M380,436 V468" class="edge"/>
+  <text x="392" y="458" class="lbl">yes</text>
+
+  <!-- 5 network -->
+  <rect x="180" y="472" width="400" height="56" class="decision" rx="10"/>
+  <text x="380" y="494" text-anchor="middle" class="text">5 · Same Wi-Fi as your device? Online?</text>
+  <text x="380" y="514" text-anchor="middle" class="small">Same SSID, no guest-network isolation.</text>
+  <path d="M180,500 H100 V528" class="fix edge"/>
+  <text x="120" y="490" class="lbl">no</text>
+  <rect x="30" y="532" width="140" height="52" class="outcome" rx="10"/>
+  <text x="100" y="552" text-anchor="middle" class="text" font-size="13">Ch 3 setup again;</text>
+  <text x="100" y="570" text-anchor="middle" class="small">then DHCP reservation.</text>
+  <path d="M170,558 H240 V528" class="fix edge"/>
+  <path d="M380,528 V560" class="edge"/>
+  <text x="392" y="550" class="lbl">yes</text>
+
+  <!-- 6 output -->
+  <rect x="180" y="564" width="400" height="56" class="decision" rx="10"/>
+  <text x="380" y="586" text-anchor="middle" class="text">6 · Test page prints cleanly now?</text>
+  <text x="380" y="606" text-anchor="middle" class="small">Look at what the page actually shows.</text>
+  <path d="M580,592 H680 V620" class="fix edge"/>
+  <text x="610" y="582" class="lbl">garbled</text>
+  <rect x="620" y="624" width="116" height="66" class="outcome" rx="10"/>
+  <text x="678" y="644" text-anchor="middle" class="text" font-size="13">Driver:</text>
+  <text x="678" y="662" text-anchor="middle" class="small">delete printer,</text>
+  <text x="678" y="678" text-anchor="middle" class="small">re-add it. (Ch 7)</text>
+  <path d="M620,657 H560 V620" class="fix edge"/>
+  <path d="M180,592 H130 V620" class="fix edge"/>
+  <text x="120" y="582" class="lbl" fill="#a05a2c">faded</text>
+  <rect x="24" y="624" width="116" height="66" class="outcome" rx="10"/>
+  <text x="82" y="644" text-anchor="middle" class="text" font-size="13">Supplies:</text>
+  <text x="82" y="662" text-anchor="middle" class="small">head-clean 1-2x,</text>
+  <text x="82" y="678" text-anchor="middle" class="small">or new ink. (Ch 7)</text>
+  <path d="M140,657 H180 V620" class="fix edge"/>
+  <path d="M380,620 V652" class="edge"/>
+  <text x="392" y="642" class="lbl">yes!</text>
+
+  <!-- 7 restart -->
+  <rect x="180" y="656" width="400" height="56" class="decision" rx="10"/>
+  <text x="380" y="678" text-anchor="middle" class="text">7 · Still stuck after all of that?</text>
+  <text x="380" y="698" text-anchor="middle" class="small">Restart: printer (30 s unplugged) → router → computer.</text>
+  <!-- final -->
+  <rect x="180" y="748" width="400" height="62" class="outcome" rx="10"/>
+  <text x="380" y="770" text-anchor="middle" class="text">Fixed? Great. Note what it was — tape the</text>
+  <text x="380" y="790" text-anchor="middle" class="small">checklist in the drawer. Next time: five minutes.</text>
+  <path d="M380,712 V744" class="fix edge"/>
+
+  <!-- stop sign -->
+  <rect x="180" y="834" width="400" height="56" class="outcome" rx="10"/>
+  <text x="380" y="856" text-anchor="middle" class="text">15 honest minutes and still stuck?</text>
+  <text x="380" y="876" text-anchor="middle" class="small">Stop. Walk away. Escalation ladder: model number + exact error text.</text>
+  <path d="M380,810 V830" class="fix edge"/>
+
+  <text x="380" y="930" text-anchor="middle" class="small">From The Printer &amp; Scanner Handbook · Copyright (c) 2026 Asdale Dynamics, LLC · MIT License</text>
+  <text x="380" y="952" text-anchor="middle" class="small">dylanasdale.github.io · print this and tape it inside the printer cabinet</text>
+</svg>
